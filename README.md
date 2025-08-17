@@ -1,1 +1,1 @@
-# Company-Website
+This website is a job and career management dashboard that helps users track opened jobs, upcoming events, received applications, and interview resources. The platform provides an intuitive interface with easy navigation and real-time updates to streamline the job search and career growth process.
