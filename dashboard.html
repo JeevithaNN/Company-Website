@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard</title>
+    <link rel="stylesheet" href="styles.css">
+    
+</head>
+<body>
+    <!-- Sidebar Navigation -->
+    <aside class="sidebar">
+        <h2 class="logo">Dataphi</h2>
+        <nav>
+            <ul>
+                <li><a href="#" id="dashboard-link" class="active">Dashboard</a></li>
+                <li><a href="#" id="home-link">Home</a></li>
+                <li><a href="#" id="about-link">About</a></li>
+                <li><a href="#" id="service-link">Service</a></li>
+                <li><a href="#" id="career-link">Career</a></li>
+                <li><a href="#" id="contact-link">Contact</a></li>
+            </ul>
+        </nav>
+        <button id="logout-btn">Logout</button>
+    </aside>
+
+    <!-- Main Content -->
+    <main id="main-content">
+        <h1>Dashboard</h1>
+        
+        <!-- Stats Section with Buttons -->
+        <section class="stats-container">
+            <div class="stat-card" id="opened-jobs-bar">
+                <h2>23</h2>
+                <p>Opened Jobs</p>
+                <button class="view-btn">View</button>
+            </div>
+            <div class="stat-card" id="upcoming-events-bar">
+                <h2>05</h2>
+                <p>Upcoming Events</p>
+                <button class="view-btn">View</button>
+            </div>
+            <div class="stat-card" id="applications-received-bar">
+                <h2>47</h2>
+                <p>Applications Received</p>
+                <button class="view-btn">View</button>
+            </div>
+            <div class="stat-card" id="interview-tips-bar">
+                <h2>3</h2>
+                <p>Interview Tips and Resources</p>
+                <button class="view-btn">View</button>
+            </div>
+        </section>
+
+        <!-- Collapsible Sections for Each Stat -->
+        <section class="job-details">
+            <button class="collapsible" id="opened-jobs-collapsible">Opened Jobs (23)</button>
+            <div class="content" id="opened-jobs-content">
+                <input type="text" id="job-search" placeholder="Search jobs..." class="search-box">
+                <ul id="job-list">
+                    <li><button class="job-item">Software Engineer - Full Stack</button></li>
+                    <li><button class="job-item">Data Analyst - Remote</button></li>
+                    <li><button class="job-item">Project Manager - On-site</button></li>
+                    <li><button class="job-item">UI/UX Designer</button></li>
+                    <li><button class="job-item">Marketing Executive</button></li>
+                    <li><button class="job-item">DevOps Engineer</button></li>
+                    <li><button class="job-item">Business Analyst</button></li>
+                    <li><button class="job-item">Cybersecurity Specialist</button></li>
+                    <li><button class="job-item">Frontend Developer</button></li>
+                    <li><button class="job-item">Backend Developer</button></li>
+                </ul>
+                
+                <!-- Apply button (Initially hidden) -->
+                <div id="apply-container" style="display: none; margin-top: 10px;">
+                    <button id="apply-button">Apply Now</button>
+                </div>
+            </div>
+
+            <button class="collapsible" id="upcoming-events-collapsible">Upcoming Events (5)</button>
+            <div class="content" id="upcoming-events-content">
+                <input type="text" id="event-search" placeholder="Search event..." class="search-box">
+                <ul id="event-list">
+                    <li>Career Fair - April 15 <button onclick="viewEventDetails('careerFair')">View</button></li>
+                    <li>Tech Talk - May 1 <button onclick="viewEventDetails('techTalk')">View</button></li>
+                    <li>Networking Event - June 10 <button onclick="viewEventDetails('networkingEvent')">View</button></li>
+                    <li>Resume Workshop - July 5 <button onclick="viewEventDetails('resumeWorkshop')">View</button></li>
+                    <li>AI Conference - August 20 <button onclick="viewEventDetails('aiConference')">View</button></li>
+                </ul>   
+            </div>
+
+            <button class="collapsible" id="applications-received-collapsible">Applications Received (47)</button>
+            <div class="content" id="applications-received-content">
+                <p>List of received applications...</p>
+            </div>
+ <!-- Collapsible Button -->
+ <button class="collapsible" id="interview-tips-collapsible">
+    Interview Tips and Resources (3)
+  </button>
+
+  <!-- Collapsible Content -->
+  <div class="content" id="interview-tips-content">
+    <input type="text" id="tips-search" placeholder="Search tips..." class="search-box">
+
+    <div class="tip-section">
+      <h4>Common Interview Questions</h4>
+      <iframe src="pdfs/NCS(Qstns).pdf"width="40%" height="80px"></iframe>
+      <p><a href="pdfs/NCS(Qstns).pdf" download>📄 Download PDF</a></p>
+    </div>
+
+    <div class="tip-section">
+      <h4>Resume Building Tips</h4>
+      <iframe src="pdfs/NCS(Qstns).pdf" width="40%" height="80px"></iframe>
+      <p><a href= "pdfs/NCS(Qstns).pdf"download>📄 Download PDF</a></p>
+    </div>
+
+    <div class="tip-section">
+      <h4>Behavioral Interview Guide</h4>
+      <iframe src="pdfs/NCS(Qstns).pdf" width="40%" height="80px"></iframe>
+      <p><a href="pdfs/NCS(Qstns).pdf" download>📄 Download PDF</a></p>
+    </div>
+  </div>
+
+        </section>
+        
+    </main>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            // Function to toggle collapsible content
+            function toggleSection(buttonId, contentId) {
+                let button = document.getElementById(buttonId);
+                let content = document.getElementById(contentId);
+                
+                button.addEventListener("click", function() {
+                    this.classList.toggle("active");
+                    content.style.display = (content.style.display === "block") ? "none" : "block";
+                });
+            }
+
+            // Toggle for all sections
+            toggleSection("opened-jobs-collapsible", "opened-jobs-content");
+            toggleSection("upcoming-events-collapsible", "upcoming-events-content");
+            toggleSection("applications-received-collapsible", "applications-received-content");
+            toggleSection("interview-tips-collapsible", "interview-tips-content");
+
+            // Link stats section buttons to collapsible sections
+            document.getElementById("opened-jobs-bar").addEventListener("click", () => {
+                document.getElementById("opened-jobs-collapsible").click();
+            });
+            
+
+            document.getElementById("upcoming-events-bar").addEventListener("click", () => {
+                document.getElementById("upcoming-events-collapsible").click();
+            });
+
+            document.getElementById("applications-received-bar").addEventListener("click", () => {
+                document.getElementById("applications-received-collapsible").click();
+            });
+
+            document.getElementById("interview-tips-bar").addEventListener("click", () => {
+                document.getElementById("interview-tips-collapsible").click();
+            });
+        });
+    </script>
+    <!-- Event Details Modal -->
+<div id="eventModal" class="modal" style="display:none;">
+    <div class="modal-content">
+        <span class="close" onclick="closeModal()">&times;</span>
+        <h2 id="modalTitle"></h2>
+        <p id="modalDescription"></p>
+    </div>
+</div>
+
+<script src="script.js"></script>
+</body>
+</html>
